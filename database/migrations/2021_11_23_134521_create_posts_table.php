@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration
             $table->timestamps();
             $table->string('titulo');
             $table->text('conteudo');
-            $table->boolean('publica');
+            $table->boolean('publica')->default('true');;
 
             $table->unsignedBigInteger('usuario');
             $table->foreign('usuario')

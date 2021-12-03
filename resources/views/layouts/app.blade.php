@@ -1,6 +1,12 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    <style>
+        .card-header {
+            margin: -1px!important;
+        }
+    </style>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -11,23 +17,35 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body style="background-color: #c5e9dd;">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a style="color: black;" href="{{ url('/') }}">
                     Início
                 </a>
-                @auth <a class="nav-link text-dark" href="/publicacoes">Publicacoes</a> @endauth
-                @guest <a class="nav-link text-dark" href="/login">Publicacoes</a> @endguest
+
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Publicações
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="/home">Todas as publicacoes</a>
+                        <a class="dropdown-item" href="/publicacao/minhas_publicacoes">Minhas publicacoes</a>
+                        <a class="dropdown-item" href="/publicacao/criar">Criar publicação</a>
+                    </div>
+                </div>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -80,6 +98,11 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <footer class="m-0" styly="bottom: 0;">
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                <p> Sistema desenvolvido no programa Ustart <br> © 2021 Dariãn Mello </p>
+            </div>
+        </footer>
     </div>
 </body>
 </html>

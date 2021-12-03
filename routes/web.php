@@ -19,9 +19,13 @@ Route::get('/', function() {
 
 Auth::routes();
 
-Route::get('/publicacoes', [PostController::class, 'index']);
+Route::get('/home', [PostController::class, 'index']);
 
-Route::get('/criar_publicacao', [PostController::class, 'criar']);
-Route::post('/inserir_publicacao', [PostController::class, 'inserir']);
+Route::get('/publicacao/criar', [PostController::class, 'criar']);
+Route::get('/publicacao/editar/{id}', [PostController::class, 'editar']);
+Route::get('/publicacao/minhas_publicacoes', [PostController::class, 'minhasPublicacoes']);
+Route::post('/publicacao/inserir', [PostController::class, 'inserir']);
+Route::put('/publicacao/atualizar/{id}', [PostController::class, 'atualizar']);
+Route::delete('/publicacao/deletar/{id}', [PostController::class, 'deletar']);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
